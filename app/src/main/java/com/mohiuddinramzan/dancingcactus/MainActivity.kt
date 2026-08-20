@@ -5,10 +5,14 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.webkit.PermissionRequest
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.webkit.WebViewAssetLoader
+import androidx.webkit.WebViewClientCompat
 
 class MainActivity : ComponentActivity() {
 
@@ -31,11 +35,28 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Serve local assets over a virtual https:// origin so the WebView
+        // treats the page as a secure context. getUserMedia() (microphone
+        // access) is blocked by Chromium on insecure origins like file://,
+        // which is why the mic permission never actually worked before.
+        val assetLoader = WebViewAssetLoader.Builder()
+            .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(this))
+            .build()
+
         webView = WebView(this)
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
         webView.settings.allowFileAccess = true
         webView.settings.mediaPlaybackRequiresUserGesture = false
+
+        webView.webViewClient = object : WebViewClientCompat() {
+            override fun shouldInterceptRequest(
+                view: WebView,
+                request: WebResourceRequest
+            ): WebResourceResponse? {
+                return assetLoader.shouldInterceptRequest(request.url)
+            }
+        }
 
         webView.webChromeClient = object : WebChromeClient() {
             override fun onPermissionRequest(request: PermissionRequest) {
@@ -61,7 +82,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        webView.loadUrl("file:///android_asset/index.html")
+        webView.loadUrl("https://appassets.androidplatform.net/assets/index.html")
         setContentView(webView)
     }
 
