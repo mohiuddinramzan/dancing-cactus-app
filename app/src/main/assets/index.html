@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+<title>নাচুনে ক্যাকটাস 🌵</title>
+<meta name="description" content="কথা বলা ও নাচুনে খেলনা ক্যাকটাস — ছুঁলেই নাচে, রেকর্ড করা কথা ফানি ভয়েসে ফিরিয়ে দেয়।" />
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#59AC78" />
+<link rel="icon" href="icons/icon-192.png" type="image/png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="নাচুনে ক্যাকটাস" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="sky">
+    <div class="sun"></div>
+    <div class="cloud cloud--a"></div>
+    <div class="cloud cloud--b"></div>
+  </div>
+
+  <header class="topbar">
+    <h1 class="logo">নাচুনে ক্যাকটাস <span class="wave">🌵</span></h1>
+    <p class="subtitle">আমাকে ছুঁয়ে দাও, আমি নাচবো। আমার সাথে কথা বলো, আমি রিপিট করবো!</p>
+  </header>
+
+  <main class="stage" id="stage">
+
+    <div class="status-pill" id="statusPill">
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText">ছুঁয়ে দেখো আমাকে</span>
+    </div>
+
+    <div class="cactus-wrap" id="cactusWrap" role="button" tabindex="0" aria-label="ক্যাকটাসকে স্পর্শ করো, সে নাচবে">
+
+      <svg id="cactus" class="cactus" viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- shadow -->
+        <ellipse class="shadow" cx="150" cy="358" rx="70" ry="12" />
+
+        <!-- pot -->
+        <g class="pot">
+          <path d="M95 300 L205 300 L192 355 Q150 366 108 355 Z" fill="#E8873A"/>
+          <rect x="88" y="285" width="124" height="22" rx="8" fill="#F5A15A"/>
+          <path d="M108 355 Q150 366 192 355 L188 348 Q150 358 112 348 Z" fill="#C96B25"/>
+        </g>
+
+        <!-- left arm -->
+        <g class="arm arm--left">
+          <path d="M118 230 C78 230 70 190 78 150 C82 128 100 118 112 122 C104 150 104 190 128 214 Z" fill="#4C9A6A"/>
+          <path d="M118 230 C78 230 70 190 78 150 C82 128 100 118 112 122 C104 150 104 190 128 214 Z" fill="none" stroke="#3A7D53" stroke-width="4"/>
+          <circle cx="94" cy="150" r="4.5" fill="#3A7D53"/>
+          <circle cx="86" cy="176" r="4.5" fill="#3A7D53"/>
+          <circle cx="98" cy="200" r="4.5" fill="#3A7D53"/>
+        </g>
+
+        <!-- right arm -->
+        <g class="arm arm--right">
+          <path d="M182 244 C222 244 230 204 222 164 C218 142 200 132 188 136 C196 164 196 204 172 228 Z" fill="#59AC78"/>
+          <path d="M182 244 C222 244 230 204 222 164 C218 142 200 132 188 136 C196 164 196 204 172 228 Z" fill="none" stroke="#3A7D53" stroke-width="4"/>
+          <circle cx="206" cy="164" r="4.5" fill="#3A7D53"/>
+          <circle cx="214" cy="190" r="4.5" fill="#3A7D53"/>
+          <circle cx="202" cy="214" r="4.5" fill="#3A7D53"/>
+        </g>
+
+        <!-- body -->
+        <g class="body-group">
+          <path d="M108 300 C90 300 82 280 82 250 L82 150 C82 100 112 70 150 70 C188 70 218 100 218 150 L218 250 C218 280 210 300 192 300 Z" fill="#59AC78" stroke="#3A7D53" stroke-width="4"/>
+          <!-- spine dots -->
+          <g class="spines" fill="#3A7D53">
+            <circle cx="112" cy="130" r="3.5"/><circle cx="112" cy="160" r="3.5"/><circle cx="112" cy="190" r="3.5"/><circle cx="112" cy="220" r="3.5"/><circle cx="112" cy="250" r="3.5"/><circle cx="112" cy="278" r="3.5"/>
+            <circle cx="150" cy="115" r="3.5"/><circle cx="150" cy="145" r="3.5"/><circle cx="150" cy="175" r="3.5"/><circle cx="150" cy="205" r="3.5"/><circle cx="150" cy="235" r="3.5"/><circle cx="150" cy="265" r="3.5"/><circle cx="150" cy="290" r="3.5"/>
+            <circle cx="188" cy="130" r="3.5"/><circle cx="188" cy="160" r="3.5"/><circle cx="188" cy="190" r="3.5"/><circle cx="188" cy="220" r="3.5"/><circle cx="188" cy="250" r="3.5"/><circle cx="188" cy="278" r="3.5"/>
+          </g>
+
+          <!-- flower -->
+          <g class="flower" transform="translate(150,58)">
+            <circle cx="0" cy="-14" r="10" fill="#FF6B9D"/>
+            <circle cx="12" cy="-6" r="10" fill="#FF6B9D"/>
+            <circle cx="8" cy="9" r="10" fill="#FF6B9D"/>
+            <circle cx="-8" cy="9" r="10" fill="#FF6B9D"/>
+            <circle cx="-12" cy="-6" r="10" fill="#FF6B9D"/>
+            <circle cx="0" cy="0" r="8" fill="#FFD166"/>
+          </g>
+
+          <!-- face -->
+          <g class="face">
+            <g class="eye eye--left">
+              <circle cx="130" cy="160" r="13" fill="#fff" stroke="#2E2E2E" stroke-width="2.5"/>
+              <circle class="pupil" cx="132" cy="162" r="6" fill="#2E2E2E"/>
+            </g>
+            <g class="eye eye--right">
+              <circle cx="170" cy="160" r="13" fill="#fff" stroke="#2E2E2E" stroke-width="2.5"/>
+              <circle class="pupil" cx="172" cy="162" r="6" fill="#2E2E2E"/>
+            </g>
+            <path class="mouth" d="M132 190 Q150 208 168 190" fill="none" stroke="#2E2E2E" stroke-width="4" stroke-linecap="round"/>
+            <ellipse class="blush blush--left" cx="118" cy="182" rx="9" ry="5.5" fill="#FF9EB8" opacity="0.8"/>
+            <ellipse class="blush blush--right" cx="182" cy="182" rx="9" ry="5.5" fill="#FF9EB8" opacity="0.8"/>
+          </g>
+        </g>
+
+      </svg>
+
+      <div class="sparkle-layer" id="sparkleLayer"></div>
+    </div>
+
+    <div class="controls">
+      <button class="btn btn--record" id="recordBtn" type="button">
+        <span class="btn-icon" id="recordIcon">🎙️</span>
+        <span class="btn-label" id="recordLabel">কথা বলো</span>
+      </button>
+      <button class="btn btn--dance" id="danceBtn" type="button">
+        <span class="btn-icon">💃</span>
+        <span class="btn-label">নাচাও</span>
+      </button>
+    </div>
+
+    <p class="hint" id="hint">মাইক্রোফোনের অনুমতি দিয়ে "কথা বলো" চাপো, তারপর কিছু বলো — ক্যাকটাস মজার গলায় সেটা ফিরিয়ে বলবে আর নাচবে!</p>
+  </main>
+
+  <footer class="footer">
+    <span>তৈরি হয়েছে সাধারণ HTML, CSS ও JavaScript দিয়ে — কোনো ব্যাকএন্ড লাগে না। 🌵</span>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>

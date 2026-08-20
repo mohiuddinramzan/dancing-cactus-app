@@ -1,0 +1,32 @@
+{
+  "name": "নাচুনে ক্যাকটাস",
+  "short_name": "নাচুনে ক্যাকটাস",
+  "description": "কথা বলা ও নাচুনে খেলনা ক্যাকটাস — ছুঁলেই নাচে, রেকর্ড করা কথা মজার গলায় ফিরিয়ে দেয়।",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF3D6",
+  "theme_color": "#59AC78",
+  "lang": "bn",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
